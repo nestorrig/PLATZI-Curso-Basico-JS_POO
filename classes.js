@@ -1,10 +1,48 @@
-class LearningPath {
-    
+class Course {
+    constructor({
+        id,
+        name,
+        teacher,
+        lessons = [],
+    }) {
+        this.id = id;
+        this.name = name;
+        this.teacher = teacher;
+        this.lessons = lessons;
+    }
 }
 
-const escuelaWeb = new LearningPath();
-const escuelaData = new LearningPath();
-const escuelaVgs = new LearningPath();
+class LearningPath {
+    constructor({
+        id,
+        name,
+        courses = []
+    }) {
+        this.id = id
+        this.name = name
+        this.courses = courses
+    }
+    addCourse(course) {
+        this.courses.push(course)
+    }
+    replaceCourse(oldcourse, newCourse) {
+        let index = this.courses.findIndex((course) => course === oldcourse)
+        this.courses.splice(index, 1, newCourse)
+    }
+    deleteCourse(id) {
+        let index = this.courses.findIndex((course) => course.id === id)
+        this.courses.splice(index)
+    }
+}
+
+const escuelaWeb = new LearningPath({
+    id: 1,
+    name: 'Desarrollo web',
+});
+const escuelaData = new LearningPath({
+    id: 2,
+    name: 'Ciencia de Datos',
+});
 
 class Student {
     constructor({
@@ -35,7 +73,7 @@ const juan2 = new Student({
     username: "juandc",
     email: "juanito@juanito.com",
     twitter: "fjuandc",
-    learningPaths: [escuelaWeb, escuelaVgs],
+    learningPaths: [escuelaWeb],
 });
 
 const miguelito2 = new Student({
