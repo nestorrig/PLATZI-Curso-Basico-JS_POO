@@ -1,8 +1,9 @@
+// Cursos
 class Course {
     constructor({
-        id,
+        id = '',
         name,
-        teacher,
+        teacher = '',
         lessons = [],
     }) {
         this.id = id;
@@ -11,7 +12,23 @@ class Course {
         this.lessons = lessons;
     }
 }
+const programacionBasica = new Course({
+    id: 1,
+    name: 'Curso Gratis de Programación Básica',
+    teacher: 'Team Platzi'
+})
+const definitivoHTMLyCSS = new Course({
+    id: 2,
+    name: 'Curso Definitivo de HTML y CSS',
+    teacher: 'Diego de Granda'
+})
+const promptEngineering = new Course({
+    id: 3,
+    name: 'Curso de Prompt Engineerig con ChatGPT',
+    teacher: 'Juan Alarcon'
+})
 
+// Rutas de aprendizaje
 class LearningPath {
     constructor({
         id,
@@ -38,12 +55,21 @@ class LearningPath {
 const escuelaWeb = new LearningPath({
     id: 1,
     name: 'Desarrollo web',
+    courses: [
+        programacionBasica,
+        definitivoHTMLyCSS
+    ]
 });
 const escuelaData = new LearningPath({
     id: 2,
     name: 'Ciencia de Datos',
+    courses: [
+        promptEngineering
+    ]
 });
 
+
+// Estudiantes
 class Student {
     constructor({
         name,
@@ -83,3 +109,35 @@ const miguelito2 = new Student({
     instagram: "migelito_feliz",
     learningPaths: [escuelaWeb, escuelaData],
 });
+
+// Profesores
+class Teacher {
+    constructor({
+        name,
+        email,
+        username,
+        twitter = undefined,
+        instagram = undefined,
+        facebook = undefined,
+        Courses = [],
+    }) {
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.socialMedia = {
+            twitter,
+            instagram,
+            facebook,
+        };
+        this.Courses = Courses;
+    }
+    crearCurso(courseName, id) {
+        const newCourse = new Course({
+            id: id,
+            name: courseName,
+            teacher: this.name
+        })
+    }
+}
+
+// 
