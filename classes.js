@@ -1,5 +1,7 @@
 // Cursos
 class Course {
+    #name
+
     constructor({
         id = '',
         name,
@@ -7,9 +9,16 @@ class Course {
         lessons = [],
     }) {
         this.id = id;
-        this.name = name;
+        this.#name = name;
         this.teacher = teacher;
         this.lessons = lessons;
+    }
+
+    get name() {
+        return this.#name;
+    }
+    set name(newName) {
+        this.#name = newName;
     }
 }
 const programacionBasica = new Course({
@@ -30,15 +39,25 @@ const promptEngineering = new Course({
 
 // Rutas de aprendizaje
 class LearningPath {
+    #id
+
     constructor({
         id,
         name,
         courses = []
     }) {
-        this.id = id
+        this.#id = id
         this.name = name
         this.courses = courses
     }
+
+    get id() {
+        return this.#id;
+    }
+    set id(newId) {
+        this.#id = newId;
+    }
+
     addCourse(course) {
         this.courses.push(course)
     }
@@ -71,6 +90,8 @@ const escuelaData = new LearningPath({
 
 // Estudiantes
 class Student {
+    #email
+
     constructor({
         name,
         email,
@@ -82,7 +103,7 @@ class Student {
         learningPaths = [],
     }) {
         this.name = name;
-        this.email = email;
+        this.#email = email;
         this.username = username;
         this.socialMedia = {
             twitter,
@@ -91,6 +112,12 @@ class Student {
         };
         this.approvedCourses = approvedCourses;
         this.learningPaths = learningPaths;
+    }
+    get email() {
+        return this.#email;
+    }
+    set email(newEmail) {
+        this.#email = newEmail;
     }
 }
 
