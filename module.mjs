@@ -5,12 +5,12 @@ const clase67 = new PlatziClass({
     videoID: "wertyuio;p87htreghtyuioouyjtrh",
 });
 
-clase67.reproducir();
-clase67.pausar();
+// clase67.reproducir();
+// clase67.pausar();
 
-clase67.reproducir();
-clase67.pausar();
+// clase67.reproducir();
+// clase67.pausar();
 
-clase67.reproducir();
-clase67.pausar();
+// clase67.reproducir();
+// clase67.pausar();
 
