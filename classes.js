@@ -1,3 +1,25 @@
+// Comentarios
+class Comment {
+    constructor({
+        content,
+        studentName,
+        studentRole = "estudiante",
+    }) {
+        this.content = content;
+        this.studentName = studentName;
+        this.studentRole = studentRole;
+        this.likes = 0;
+    }
+
+    publicar() {
+        console.log(this.studentName + " (" + this.studentRole + ")");
+        console.log(this.likes + " likes");
+        console.log(this.content);
+    }
+}
+
+
+
 // Clases
 function videoPlay(id) {
     const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
@@ -155,6 +177,14 @@ class Student {
     set email(newEmail) {
         this.#email = newEmail;
     }
+
+    publicarComentario(commentContent) {
+        const comment = new Comment({
+        content: commentContent,
+        studentName: this.name,
+        });
+        comment.publicar();
+    }
 }
 class FreeStudent extends Student {
     constructor(props) {
@@ -238,5 +268,29 @@ class Teacher {
         })
     }
 }
+class TeacherStudent extends Student {
+    constructor(props) {
+    super(props);
+    }
 
+    approveCourse(newCourse) {
+    this.approvedCourses.push(newCourse);
+    }
+
+    publicarComentario(commentContent) {
+    const comment = new Comment({
+        content: commentContent,
+        studentName: this.name,
+        studentRole: "profesor",
+    });
+    comment.publicar();
+    }
+}
+
+const freddy = new TeacherStudent({
+    name: "Freddy Vega",
+    username: "freddier",
+    email: "f@gep.com",
+    instagram: "freddiervega",
+});
 // 
